@@ -925,13 +925,12 @@
     });
 
     var stats = state.globalStats || {};
-    var topGrade = stats.top_grade ? stats.top_grade + "-" + t("grade").toLowerCase() : t("none");
     return {
       totalStudents: Number(stats.total_students || leaderboard.length || 0),
       submittedWorks: Number(stats.submitted_works || state.scoreboard.length || 0),
       gradedWorks: Number(stats.graded_works || state.scoreboard.length || 0),
       averageScore: stats.average_score == null ? 0 : Math.round(Number(stats.average_score)),
-      topGrade: topGrade,
+      scopeLabel: t("allGrades"),
       leaderboard: leaderboard
     };
   }
@@ -1041,7 +1040,7 @@
       '<p class="eyebrow">' + escapeHtml(t("publicStats")) + '</p>',
       '<h2>' + escapeHtml(t("globalStats")) + '</h2>',
       '</div>',
-      '<span class="status-pill">' + escapeHtml(stats.topGrade) + '</span>',
+      '<span class="status-pill">' + escapeHtml(stats.scopeLabel) + '</span>',
       '</div>',
       '<div class="metric-grid">',
       metric("totalStudents", stats.totalStudents),
